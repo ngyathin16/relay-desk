@@ -1,0 +1,90 @@
+[
+  {
+    "id": "invitations",
+    "title": {"en": "Invite a teammate or replace an expired invitation", "zh": "邀請同事或重發已過期的邀請"},
+    "category": "Access",
+    "body": {
+      "en": "Workspace administrators can invite a teammate from Settings > Members > Invite. Enter the teammate's work email and choose Member or Administrator. An invitation expires 72 hours after it is sent. To replace an expired invitation, open Settings > Members > Pending invitations and select Resend; the old invitation link stops working. Ask the teammate to open the newest email and sign in with the exact email address that received the invitation. A member cannot send or resend invitations; ask a workspace administrator to do it.",
+      "zh": "工作區管理員可前往「設定 > 成員 > 邀請」，輸入同事的工作電郵地址，並選擇「成員」或「管理員」角色。邀請會在寄出後 72 小時過期。如需重發，請前往「設定 > 成員 > 待接受邀請」並選擇「重新寄送」；舊的邀請連結隨即失效。請同事開啟最新的邀請郵件，並使用收到邀請的同一電郵地址登入。一般成員無法寄送或重發邀請，需請工作區管理員處理。"
+    },
+    "keywords": {"en": ["invite", "invitation", "invitations", "invitation link", "join the team", "invite expired", "pending invitations"], "zh": ["邀請", "邀請連結", "加入團隊", "重發邀請", "待接受邀請"]},
+    "followUp": {"en": "What does the invitation page say, and are you using the email address that received the newest invitation?", "zh": "邀請頁面顯示甚麼訊息？您是否正使用收到最新邀請的同一電郵地址？"}
+  },
+  {
+    "id": "api-keys",
+    "title": {"en": "Create, rotate, and revoke API keys", "zh": "建立、輪換及撤銷 API 金鑰"},
+    "category": "Security",
+    "body": {
+      "en": "Only workspace administrators can manage API keys in Settings > Developer > API keys. A new key is displayed once; store it in a secret manager. Send the key in the Authorization header as Bearer <key>. To rotate a key, create a replacement, update your integration, confirm a successful request, and then revoke the old key. Revocation takes effect immediately. A 401 response can mean the key is missing, revoked, or belongs to another workspace. Check the workspace and header; do not paste a key into a support ticket. Harbour support cannot recover or display an existing key.",
+      "zh": "只有工作區管理員可在「設定 > 開發者 > API 金鑰」管理金鑰。新金鑰只會顯示一次，請將它存放於機密管理工具。請在 Authorization 標頭中以 Bearer <key> 傳送金鑰。輪換時，先建立新金鑰、更新整合設定並確認請求成功，再撤銷舊金鑰。撤銷會立即生效。401 回應可能代表未提供金鑰、金鑰已被撤銷，或金鑰屬於另一個工作區。請核對工作區及標頭，切勿將金鑰貼到支援單。Harbour 支援人員無法還原或顯示現有金鑰。"
+    },
+    "keywords": {"en": ["api key", "api keys", "api credential", "bearer", "401", "rotate a key", "revoke a key", "access token"], "zh": ["API 金鑰", "API密鑰", "金鑰", "密鑰", "401", "存取權杖"]},
+    "followUp": {"en": "Which workspace and HTTP status are involved? Share the status only, never the API key.", "zh": "涉及哪個工作區及哪個 HTTP 狀態碼？請只提供狀態碼，切勿提供 API 金鑰。"}
+  },
+  {
+    "id": "csv-import",
+    "title": {"en": "Import contacts from a CSV file", "zh": "從 CSV 檔案匯入聯絡人"},
+    "category": "Data",
+    "body": {
+      "en": "Members and administrators can import contacts from Contacts > Import CSV. Use UTF-8 encoding and the exact header names email,name. Both columns must exist; every row must contain an email, while name may be blank. Each file must be no larger than 5 MB and contain no more than 2,000 contact rows, excluding the header. Harbour validates the whole file before saving. If any row fails validation, no contacts are imported; download the error report, fix the listed rows, and upload the corrected file. Within the current workspace, an existing contact with the same email is updated rather than duplicated.",
+      "zh": "成員及管理員可前往「聯絡人 > 匯入 CSV」匯入聯絡人。檔案須使用 UTF-8 編碼，欄位名稱必須為 email,name。兩個欄位均須存在；每行必須有電郵地址，姓名則可留空。每個檔案不可超過 5 MB，且最多可有 2,000 行聯絡人資料，標題行不計算在內。Harbour 會先驗證整個檔案再儲存。如任何一行驗證失敗，所有聯絡人均不會匯入；請下載錯誤報告、修正所列資料，再上傳修正後的檔案。在同一工作區中，如已有相同電郵地址的聯絡人，系統會更新該聯絡人而不會新增重複記錄。"
+    },
+    "keywords": {"en": ["csv", "csv import", "import contacts", "contact import", "upload contacts", "import file", "import rows"], "zh": ["CSV", "匯入", "匯入聯絡人", "上傳聯絡人", "欄位名稱", "錯誤報告"]},
+    "followUp": {"en": "What does the CSV error report say, and how large is the file? Omit contact data from your reply.", "zh": "CSV 錯誤報告顯示甚麼？檔案大小是多少？回覆時請勿附上聯絡人的個人資料。"}
+  },
+  {
+    "id": "webhooks",
+    "title": {"en": "Check webhook delivery and verify signatures", "zh": "檢查 Webhook 傳送及驗證簽章"},
+    "category": "Integrations",
+    "body": {
+      "en": "Administrators configure HTTPS webhook endpoints in Settings > Developer > Webhooks. Harbour sends contact.created and contact.updated events. Verify the X-Harbour-Signature header using HMAC-SHA256 over the unmodified request body and the endpoint's signing secret. Return a 2xx status within 5 seconds. If the endpoint times out or returns a non-2xx status, Harbour retries after 1 minute, 5 minutes, and 30 minutes, then stops. An event can arrive more than once; deduplicate using event_id. The Webhooks page keeps delivery attempts for 7 days and offers a Retry action for a failed event. Never put the signing secret in a support ticket.",
+      "zh": "管理員可在「設定 > 開發者 > Webhooks」設定 HTTPS 接收端點。Harbour 會傳送 contact.created 及 contact.updated 事件。請使用端點的簽署密鑰，對未經修改的請求本文計算 HMAC-SHA256，以驗證 X-Harbour-Signature 標頭。端點須在 5 秒內回傳 2xx 狀態碼。如逾時或回傳非 2xx 狀態碼，Harbour 會在 1 分鐘、5 分鐘及 30 分鐘後重試，然後停止。同一事件可能重複送達，請使用 event_id 去除重複事件。Webhooks 頁面保留 7 天的傳送嘗試記錄，並提供「重試」功能以重新傳送失敗事件。切勿將簽署密鑰放入支援單。"
+    },
+    "keywords": {"en": ["webhook", "webhooks", "signing secret", "x-harbour-signature", "event_id", "contact.created", "contact.updated", "callback endpoint"], "zh": ["Webhook", "webhooks", "簽章", "簽署密鑰", "回呼端點", "事件傳送"]},
+    "followUp": {"en": "Which event ID and delivery status appear on the Webhooks page? Do not include the signing secret.", "zh": "Webhooks 頁面顯示哪個事件 ID 及傳送狀態？請勿附上簽署密鑰。"}
+  },
+  {
+    "id": "billing",
+    "title": {"en": "Download invoices and update billing details", "zh": "下載發票及更新帳單資料"},
+    "category": "Billing",
+    "body": {
+      "en": "Workspace administrators can open Settings > Billing. Under Invoices, choose an issued invoice and select Download PDF. Under Payment method, an administrator can replace the payment card. Under Billing details, update the billing email, company name, or billing address. Changes apply to future invoices; already issued invoices do not change. Members cannot view invoices or change payment details. For a correction to an issued invoice, send the invoice number and the requested correction to a workspace administrator, who must contact Harbour support. Do not include card numbers or security codes in a support ticket. This article does not specify plan prices, discounts, refunds, or payment retry timing.",
+      "zh": "工作區管理員可開啟「設定 > 帳單」。在「發票」中選取已開立的發票，再選擇「下載 PDF」。管理員可在「付款方式」更換付款卡，並在「帳單資料」更新帳單電郵地址、公司名稱或帳單地址。更新只適用於之後開立的發票，已開立的發票不會更改。一般成員無法查看發票或更改付款資料。如需更正已開立的發票，請將發票號碼及所需更正內容交給工作區管理員，再由管理員聯絡 Harbour 支援。切勿在支援單提供卡號或安全碼。本文未列出方案價格、折扣、退款規則或付款重試時間。"
+    },
+    "keywords": {"en": ["invoice", "invoices", "billing", "payment card", "payment method", "billing address", "billing email", "download pdf"], "zh": ["發票", "帳單", "付款方式", "付款卡", "帳單地址", "帳單電郵"]},
+    "followUp": {"en": "Are you a workspace administrator, and are you changing future billing details or an invoice already issued?", "zh": "您是工作區管理員嗎？您要更新之後使用的帳單資料，還是更正已開立的發票？"}
+  },
+  {
+    "id": "data-export",
+    "title": {"en": "Export workspace contacts", "zh": "匯出工作區聯絡人"},
+    "category": "Data",
+    "body": {
+      "en": "Only workspace administrators can request an export from Settings > Data > Export contacts. The export contains the current workspace's contacts in a UTF-8 CSV file with email,name,created_at columns. It does not include uploaded attachments or activity history. Harbour emails a download link to the administrator who requested the export when it is ready. The link expires after 24 hours. If it expires, request a new export from the same page. Only the requesting administrator can download the file while signed in. Exporting does not delete or change contacts. This article makes no promise about export processing time.",
+      "zh": "只有工作區管理員可前往「設定 > 資料 > 匯出聯絡人」提出匯出要求。匯出檔案包含目前工作區的聯絡人，格式為 UTF-8 CSV，欄位為 email,name,created_at。檔案不包含已上傳的附件或活動歷程。匯出準備完成後，Harbour 會將下載連結寄給提出要求的管理員。連結會在 24 小時後過期；過期後請在同一頁面重新提出匯出要求。只有提出要求的管理員在登入後才可下載檔案。匯出不會刪除或修改聯絡人。本文並未承諾匯出所需的處理時間。"
+    },
+    "keywords": {"en": ["export", "exports", "export contacts", "download link", "export file", "data export", "contact backup"], "zh": ["匯出", "匯出聯絡人", "下載連結", "匯出檔案", "聯絡人備份"]},
+    "followUp": {"en": "Did you request this export as an administrator, and is its download link more than 24 hours old?", "zh": "您是否以管理員身分提出這次匯出要求？下載連結是否已超過 24 小時？"}
+  },
+  {
+    "id": "workspace-access",
+    "title": {"en": "Understand workspace roles and change a member's role", "zh": "了解工作區角色及更改成員角色"},
+    "category": "Access",
+    "body": {
+      "en": "Harbour has two workspace roles: Member and Administrator. Members can view, create, edit, and import contacts. Administrators also manage members, billing, API keys, webhooks, and exports. A workspace administrator can change a person's role from Settings > Members > Role. The change takes effect on that person's next request. Every workspace must keep at least one administrator, so the last administrator cannot demote or remove themselves. Ask another administrator for a role change. If your workspace has no reachable administrator, contact Harbour support; this guide does not describe an ownership-recovery or identity-verification procedure.",
+      "zh": "Harbour 有「成員」及「管理員」兩種工作區角色。成員可以查看、建立、編輯及匯入聯絡人。管理員亦可管理成員、帳單、API 金鑰、Webhook 及匯出。工作區管理員可在「設定 > 成員 > 角色」更改他人的角色。更改會在該使用者下一次發出請求時生效。每個工作區必須保留至少一名管理員，因此最後一名管理員無法降低自己的權限或移除自己。如需更改角色，請聯絡另一名管理員。如無法聯絡任何工作區管理員，請聯絡 Harbour 支援；本指南未說明擁有權復原或身分驗證程序。"
+    },
+    "keywords": {"en": ["workspace role", "member role", "administrator role", "permissions", "change role", "change a role", "last administrator", "promote a member", "demote"], "zh": ["工作區角色", "成員角色", "管理員角色", "權限", "更改角色", "最後一名管理員", "降級"]},
+    "followUp": {"en": "What is your current role, and which action do you need an administrator to enable?", "zh": "您目前的角色是甚麼？您需要管理員協助開放哪項操作？"}
+  },
+  {
+    "id": "notifications",
+    "title": {"en": "Choose immediate or daily contact notifications", "zh": "選擇即時或每日聯絡人通知"},
+    "category": "Preferences",
+    "body": {
+      "en": "Each user controls their own contact-assignment emails in Profile > Notifications. Choose Immediate, Daily digest, or Off. Immediate sends an email when a contact is assigned to you. Daily digest combines assignments into one email at 09:00 in your profile time zone and sends nothing on days with no assignments. Change that time zone in Profile > Locale. Off stops contact-assignment emails; security emails and invitation emails remain enabled. An administrator cannot change another person's notification preference.",
+      "zh": "每位使用者可在「個人檔案 > 通知」管理自己的聯絡人指派電郵，選項為「即時」、「每日摘要」或「關閉」。「即時」會在有聯絡人指派給您時寄出電郵。「每日摘要」會按個人檔案所設的時區，於上午 09:00 將指派事項合併為一封電郵；當天沒有指派事項便不會寄出。您可在「個人檔案 > 地區設定」更改時區。「關閉」只會停止聯絡人指派電郵，安全通知及邀請郵件仍會寄出。管理員無法更改其他人的通知偏好。"
+    },
+    "keywords": {"en": ["notification", "notifications", "daily digest", "assignment email", "assignment emails", "email alerts", "contact notifications"], "zh": ["通知", "每日摘要", "指派電郵", "電郵提醒", "通知偏好"]},
+    "followUp": {"en": "Which notification option and profile time zone are selected?", "zh": "您目前選擇哪個通知選項，以及哪個個人檔案時區？"}
+  }
+]

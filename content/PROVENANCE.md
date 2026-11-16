@@ -1,0 +1,13 @@
+# Fixture provenance
+
+Harbour is a fictional contact-management SaaS product created for this demonstration. Its policies, menu paths, limits, and examples are invented. They are not statements about a real vendor. The eight articles were drafted in English and Traditional Chinese together; both versions describe the same intended product behavior. No customer tickets, customer data, vendor manuals, or private support records were used.
+
+`knowledge.json` is the source corpus. Its keyword lists are human-readable retrieval vocabulary, not embeddings or learned model weights. Article IDs are stable citations shared by the application and evaluation. `examples.json` contains seven clickable demonstrations. Those examples are distinct from the evaluation tickets.
+
+`evaluation.json` contains 36 cases written before the first baseline run: 18 answerable cases, four requests needing context, eight questions outside the documented facts, and six instruction attacks. The expected outcomes come from the intended support policy and article content, independently of the analyzer's output. Expectations must not be changed just to make an implementation pass. Corrections to a mistaken fixture should explain the documentary evidence and remain visible in version history.
+
+The evaluation is a small, public development regression set. Retrieval rules were adjusted after developers inspected these cases. The first recorded run passed 34 of 36 cases; the two failures exposed a punctuation-normalization bug in Chinese clarification detection. Fixing the analyzer produced 36 of 36 passes without changing the expected outcomes. Those results are not a held-out accuracy estimate. Bilingual wording and paraphrases exercise more than a copied list of exact example tickets, but they do not establish general language understanding. The unsupported cases intentionally include questions adjacent to documented topics: scheduled CSV imports, refunds, and guaranteed export processing time.
+
+A passing case requires the expected outcome and exact article-ID set. It does not judge whether the response fully answers the question, whether an excerpt is the most useful one, translation quality, model hallucinations, or prompt-injection resistance in general. An article citation by itself does not prove a generated answer is correct. Live-model output needs a separate reviewed evaluation before any accuracy claim.
+
+This project and its fixtures were developed with AI assistance. The repository owner should review the product facts, translations, implementation, and demonstration results before presenting the work. There are no claimed customer deployments, measured business savings, or production outcomes.

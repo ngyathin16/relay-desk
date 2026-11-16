@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ee">
+  <meta name="description" content="Relay Desk — a bilingual, evidence-first support workbench. Find the source, review the reply, and make a considered handoff.">
+  <title>Relay Desk · Support workbench</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to workspace</a>
+  <svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path d="m4 4-2 10v6h20v-6L20 4H4Z"/><path d="M2 14h6l2 3h4l2-3h6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 4h6a4 4 0 0 1 3 2 4 4 0 0 1 3-2h6v16h-6a4 4 0 0 0-3 1 4 4 0 0 0-3-1H3Z"/><path d="M12 6v15M6 8h3m-3 4h3m6-4h3m-3 4h3"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 3v17h17M8 15v-4m5 4V6m5 9V9"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7a9 9 0 1 0 1 9M20 2v6h-6"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="m10 13 4-4m-6 7-2 2a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0m2 1 2-2a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0" transform="translate(1 0)"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></symbol>
+  </defs></svg>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Workspace navigation">
+      <a class="brand" href="#workbench" aria-label="Relay Desk home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>relay<span class="brand-light">desk</span><span class="brand-dot">.</span></span></a>
+      <div class="workspace-id"><span class="workspace-avatar">H</span><span><strong>Harbour</strong><small>Support workspace</small></span><span class="workspace-label">DEMO</span></div>
+      <p class="nav-caption">WORKSPACE</p>
+      <nav class="main-nav">
+        <a href="#workbench" data-view="workbench" class="nav-item active" aria-current="page"><svg><use href="#i-inbox"/></svg><span>Workbench</span><span class="nav-key">01</span></a>
+        <a href="#knowledge" data-view="knowledge" class="nav-item"><svg><use href="#i-book"/></svg><span>Knowledge</span><span class="nav-key">02</span></a>
+        <a href="#evaluation" data-view="evaluation" class="nav-item"><svg><use href="#i-chart"/></svg><span>Evaluation</span><span class="nav-key">03</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="note-line"></span><p>A little more context.<br>A much better reply.</p><span>BUILT FOR CONSIDERED SUPPORT</span></div>
+      <div class="sidebar-bottom"><span class="local-dot"></span><span>Local demo environment<small>No real customer messages are sent.</small></span></div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar"><div class="breadcrumb">Harbour <span>/</span> <strong id="breadcrumb-view">Workbench</strong></div><div class="topbar-right"><span class="local-dot"></span> Local workspace <span class="avatar" aria-label="Demo operator">H</span></div></header>
+      <main id="main" tabindex="-1">
+        <div id="global-message" class="notice error" role="alert" hidden><span id="global-message-text"></span><button id="retry-bootstrap" class="text-button" type="button">Reconnect</button></div>
+        <section id="view-workbench" class="view" aria-labelledby="workbench-title">
+          <div class="page-heading"><div><p class="eyebrow">THE SUPPORT WORKBENCH</p><h1 id="workbench-title">Good support starts here.</h1><p class="page-description">Turn a customer question into a reply you can stand behind.</p></div><span class="outline-badge"><svg><use href="#i-link"/></svg> Evidence first. Human approved.</span></div>
+          <ol class="workflow" aria-label="Resolution workflow"><li class="current"><span>01</span> Understand the question</li><li id="step-review"><span>02</span> Review the evidence</li><li id="step-handoff"><span>03</span> Make the handoff</li></ol>
+
+          <div class="workbench-grid">
+            <section class="panel ticket-panel" aria-labelledby="ticket-heading">
+              <div class="panel-heading"><div class="section-label"><span class="section-number">01</span><h2 id="ticket-heading">Customer question</h2></div><span class="muted-label">START HERE</span></div>
+              <form id="ticket-form">
+                <label for="example-select" class="field-label">Explore a sample <span>or write your own below</span></label>
+                <select id="example-select" disabled><option value="">Loading examples…</option></select>
+                <div class="input-label-row"><label for="ticket" class="field-label">Incoming message</label><span id="ticket-count" class="character-count">0 / 4,000</span></div>
+                <textarea id="ticket" class="ticket-input" maxlength="4000" required placeholder="What does the customer need help with?" aria-describedby="ticket-help"></textarea>
+                <p id="ticket-help" class="field-hint">English and Traditional Chinese are supported.</p>
+                <div class="form-columns"><div><label for="language" class="field-label">Reply language</label><select id="language"><option value="en">English</option><option value="zh">繁體中文 · Traditional Chinese</option></select></div><div><label for="mode" class="field-label">Resolution mode</label><select id="mode"><option value="extractive">Extractive baseline · free</option><option value="live" disabled>Live AI · not configured</option></select></div></div>
+                <div class="mode-note"><svg><use href="#i-book"/></svg><p id="mode-description">Finds relevant passages in the knowledge base. Uses source text, with no AI generation.</p></div>
+                <button class="button primary generate-button" id="generate-button" type="submit" disabled><span>Find a grounded reply</span><svg><use href="#i-arrow"/></svg></button>
+                <div id="draft-error" class="notice error" role="alert" hidden></div>
+              </form>
+              <div class="ticket-footer"><svg><use href="#i-lock"/></svg><span id="privacy-note">Extractive mode runs locally. Nothing leaves this workspace.</span></div>
+            </section>
+
+            <section class="panel review-panel" aria-labelledby="review-heading" aria-busy="false">
+              <div class="panel-heading"><div class="section-label"><span class="section-number">02</span><h2 id="review-heading">Evidence & reply</h2></div><span id="review-state" class="status-badge neutral">Awaiting a question</span></div>
+              <div id="review-empty" class="review-empty"><div class="evidence-illustration" aria-hidden="true"><div class="illustration-paper"><span></span><span></span><span></span><i>01</i></div><div class="illustration-connector"></div><div class="illustration-reply"><svg><use href="#i-check"/></svg><span></span><span></span></div><span class="illustration-dot"></span></div><p class="eyebrow">LESS GUESSWORK. MORE GROUNDING.</p><h3>Every answer needs<br>something to stand on.</h3><p class="empty-description">Start with a question. We’ll bring the relevant knowledge forward, so you can make the call.</p><div class="empty-principles"><div><span>1</span><p><strong>Find the evidence</strong><small>Trace each passage to its source.</small></p></div><div><span>2</span><p><strong>Make it your own</strong><small>Read, edit, and approve the reply.</small></p></div><div><span>3</span><p><strong>Send with intention</strong><small>A local mock handoff, only when you’re ready.</small></p></div></div></div>
+              <div id="review-loading" class="review-loading" hidden><span class="loading-ring" aria-hidden="true"></span><h3>Finding the right context…</h3><p id="loading-description">Checking the local knowledge base.</p></div>
+              <div id="review-result" class="review-result" hidden>
+                <p id="draft-summary" class="draft-summary"></p>
+                <div class="result-meta"><span id="draft-mode"></span><span id="draft-time"></span></div>
+                <div id="questions-box" class="questions-box" hidden><h3>Context to clarify</h3><ul id="questions-list"></ul></div>
+                <div class="evidence-title"><h3>Source evidence <span id="source-count"></span></h3><span>CHECK BEFORE SENDING</span></div>
+                <div id="sources" class="sources"></div>
+                <div class="reply-label-row"><label for="reply" class="field-label">Your reply</label><button type="button" id="copy-reply" class="text-button"><svg><use href="#i-copy"/></svg> Copy</button></div>
+                <textarea id="reply" class="reply-input" maxlength="8000" aria-describedby="reply-help"></textarea>
+                <p id="reply-help" class="field-hint">Check the facts before approving. Edits are saved on handoff; reopening a draft restores its original text.</p>
+                <div class="handoff-box"><label class="checkbox-label"><input id="approve" type="checkbox"><span>I’ve reviewed the evidence and approve this reply.</span></label><div class="handoff-actions"><button type="button" id="send-button" class="button primary" disabled><span>Send to mock CRM</span><svg><use href="#i-arrow"/></svg></button><span class="local-only">LOCAL ONLY</span></div><label class="checkbox-label simulation-label"><input id="simulate-failure" type="checkbox"><span>Simulate a failed handoff</span></label><p id="handoff-eligibility" class="field-hint" hidden></p><div id="handoff-message" class="notice" role="status" hidden></div></div>
+              </div>
+            </section>
+          </div>
+
+          <section class="activity-section" aria-labelledby="activity-heading"><div class="activity-heading"><div><h2 id="activity-heading">Recent activity <span id="history-count" class="count-badge">0</span></h2><p>Your saved drafts and local handoffs, kept between sessions.</p></div><button id="refresh-history" type="button" class="text-button"><svg><use href="#i-refresh"/></svg> Refresh</button></div><div id="history-message" class="notice error" role="alert" hidden></div><div id="history-list" class="history-list"><p class="empty-history">Loading workspace history…</p></div></section>
+        </section>
+
+        <section id="view-knowledge" class="view" aria-labelledby="knowledge-title" hidden>
+          <div class="page-heading"><div><p class="eyebrow">THE SOURCE OF TRUTH</p><h1 id="knowledge-title">A shared understanding.</h1><p class="page-description">The policies and product details behind every grounded reply.</p></div><span id="knowledge-count" class="outline-badge">Loading articles…</span></div>
+          <div class="knowledge-toolbar"><div class="search-field"><svg><use href="#i-search"/></svg><input id="knowledge-search" type="search" placeholder="Search articles in either language" aria-label="Search knowledge articles"></div><div class="language-toggle" role="group" aria-label="Article language"><button type="button" data-knowledge-language="en" class="active" aria-pressed="true">English</button><button type="button" data-knowledge-language="zh" aria-pressed="false">繁體中文</button></div></div>
+          <div id="knowledge-categories" class="category-filters" role="group" aria-label="Filter articles by category"></div>
+          <div class="knowledge-note"><svg><use href="#i-book"/></svg><p>These are self-authored policies for <strong>Harbour, a fictional product</strong>. They demonstrate retrieval and review; they are not real vendor guidance.</p></div>
+          <div id="knowledge-list" class="knowledge-grid"></div>
+        </section>
+
+        <section id="view-evaluation" class="view" aria-labelledby="evaluation-title" hidden>
+          <div class="page-heading"><div><p class="eyebrow">SHOW THE WORK</p><h1 id="evaluation-title">Useful answers. Honest checks.</h1><p class="page-description">See where the extractive baseline holds up, and where it doesn’t.</p></div><button id="run-evaluation" type="button" class="button primary"><svg><use href="#i-refresh"/></svg><span>Run evaluation</span></button></div>
+          <div class="evaluation-intro"><span class="outline-badge">EXTRACTIVE BASELINE</span><p>Fixed, synthetic questions test answer status and retrieved source IDs in English and Traditional Chinese. These checks do not measure real customer outcomes, reply quality, or live AI performance.</p></div>
+          <div id="evaluation-message" class="notice" role="status" hidden></div>
+          <div id="evaluation-empty" class="evaluation-empty"><svg><use href="#i-chart"/></svg><h2>Evidence for the evidence.</h2><p>Run the fixed corpus against the actual local baseline.<br>Results come from the code running in this workspace.</p></div>
+          <div id="evaluation-results" hidden><div class="evaluation-stats"><div><span class="stat-label">FIXED TEST CASES</span><strong id="eval-total">—</strong><p>Synthetic, bilingual fixtures</p></div><div><span class="stat-label">MATCHED EXPECTATIONS</span><strong id="eval-passed">—</strong><p>Status and source IDs</p></div><div><span class="stat-label">NEED A CLOSER LOOK</span><strong id="eval-failed">—</strong><p>Visible, unfiltered failures</p></div></div><p id="evaluation-scope" class="scope-note"></p><div class="evaluation-table-heading"><h2>Case by case</h2><label for="evaluation-filter">Show <select id="evaluation-filter"><option value="all">All results</option><option value="failed">Failed checks</option><option value="passed">Passed checks</option></select></label></div><div class="table-scroll"><table><thead><tr><th scope="col">Test case</th><th scope="col">Language</th><th scope="col">Expected</th><th scope="col">Actual</th><th scope="col">Result</th></tr></thead><tbody id="evaluation-rows"></tbody></table></div></div>
+        </section>
+        <footer class="page-footer"><span>Relay Desk <span class="footer-dot">·</span> Thoughtful support, with a paper trail.</span><span>FICTIONAL PRODUCT. WORKING PROTOTYPE.</span></footer>
+      </main>
+    </div>
+  </div>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

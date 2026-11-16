@@ -1,0 +1,13 @@
+{
+  "name": "relay-desk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local bilingual support workbench with source evidence and reviewed mock delivery.",
+  "engines": { "node": ">=24.0.0" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "test": "node --test",
+    "evaluate": "node scripts/evaluate.mjs"
+  }
+}
